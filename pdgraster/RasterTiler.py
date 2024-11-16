@@ -6,7 +6,7 @@ import os
 
 import geopandas as gpd
 import pandas as pd
-import pdgstaging
+from viz-utils import ConfigManager, TilePathManager
 
 from . import Raster
 from . import Palette
@@ -38,8 +38,8 @@ class RasterTiler():
                 JSON file.
         """
 
-        self.config = pdgstaging.ConfigManager(config)
-        self.tiles = pdgstaging.TilePathManager(
+        self.config = ConfigManager(config)
+        self.tiles = TilePathManager(
             **self.config.get_path_manager_config())
         # Pre-create the palette for each stat
         palettes = self.config.get_palettes()
